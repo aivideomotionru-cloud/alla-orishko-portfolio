@@ -68,6 +68,31 @@ let portraitPointerY = 0;
 let heroScrollProgress = 0;
 let galleryPaused = false;
 let guestPaused = false;
+let stableViewportWidth = window.innerWidth;
+let stableViewportHeight = window.innerHeight;
+let lockedScrollY = 0;
+let dialogScrollLocked = false;
+
+function lockDialogScroll() {
+  if (window.innerWidth > 760 || dialogScrollLocked) return;
+  lockedScrollY = window.scrollY;
+  document.body.style.top = `-${lockedScrollY}px`;
+  document.body.classList.add("dialog-open");
+  dialogScrollLocked = true;
+}
+
+function unlockDialogScroll() {
+  if (!dialogScrollLocked) return;
+  document.body.classList.remove("dialog-open");
+  document.body.style.top = "";
+  dialogScrollLocked = false;
+  window.scrollTo(0, lockedScrollY);
+}
+
+function showStableDialog(dialogElement) {
+  dialogElement.showModal();
+  lockDialogScroll();
+}
 
 function updateMotionToggle(button, paused, galleryName) {
   button.setAttribute("aria-pressed", String(paused));
@@ -119,10 +144,11 @@ guestCarousel.addEventListener("click", () => {
   guestDialogImage.src = activeSlide.src;
   guestDialogImage.alt = activeSlide.alt;
   guestDialogCount.textContent = `${String(activeGuest + 1).padStart(2, "0")} / ${String(guestSlides.length).padStart(2, "0")}`;
-  guestDialog.showModal();
+  showStableDialog(guestDialog);
 });
 
 guestDialog.querySelector(".guest-dialog-close").addEventListener("click", () => guestDialog.close());
+guestDialog.addEventListener("close", unlockDialogScroll);
 guestDialog.addEventListener("click", (event) => {
   if (event.target === guestDialog) guestDialog.close();
 });
@@ -235,7 +261,7 @@ function updateDialog() {
 function openWork(index) {
   activeWork = index;
   updateDialog();
-  dialog.showModal();
+  showStableDialog(dialog);
 }
 
 function stepWork(direction) {
@@ -245,6 +271,7 @@ function stepWork(direction) {
 
 allWorkFrames.forEach((frame) => frame.addEventListener("click", () => openWork(Number(frame.dataset.work))));
 dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+dialog.addEventListener("close", unlockDialogScroll);
 dialog.querySelector(".dialog-prev").addEventListener("click", () => stepWork(-1));
 dialog.querySelector(".dialog-next").addEventListener("click", () => stepWork(1));
 dialog.addEventListener("click", (event) => {
@@ -296,7 +323,7 @@ function updateMotion() {
   progress.style.width = `${max > 0 ? (y / max) * 100 : 0}%`;
 
   if (!reducedMotion) {
-    heroScrollProgress = Math.min(1, y / Math.max(1, window.innerHeight));
+    heroScrollProgress = Math.min(1, y / Math.max(1, stableViewportHeight));
     renderHeroMotion();
   }
 }
@@ -310,7 +337,12 @@ function requestMotionUpdate() {
 
 window.addEventListener("scroll", requestMotionUpdate, { passive: true });
 window.addEventListener("resize", () => {
-  measureGallery();
+  const nextViewportWidth = window.innerWidth;
+  if (Math.abs(nextViewportWidth - stableViewportWidth) > 1) {
+    stableViewportWidth = nextViewportWidth;
+    stableViewportHeight = window.innerHeight;
+    measureGallery();
+  }
   requestMotionUpdate();
 });
 window.addEventListener("load", () => {
