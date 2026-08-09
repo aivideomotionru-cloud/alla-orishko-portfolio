@@ -777,6 +777,10 @@ img {
   width: calc(54.675vh - 3.417rem);
 }
 
+.work-frame-four-five {
+  width: calc(54.4vh - 3.4rem);
+}
+
 .work-frame-tina {
   width: 43rem;
   height: 68vh;
@@ -1684,7 +1688,8 @@ img {
   .work-frame,
   .work-frame-square,
   .work-frame-portrait,
-  .work-frame-soft-portrait {
+  .work-frame-soft-portrait,
+  .work-frame-four-five {
     width: 78vw;
     height: 58svh;
     overflow: hidden;

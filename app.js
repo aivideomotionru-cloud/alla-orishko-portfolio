@@ -2,7 +2,7 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matc
 
 const works = [
   {
-    src: "assets/work-2-aligned.webp",
+    src: "assets/work-bronze-original.webp",
     alt: "Bronze editorial eye makeup by Alla Orishko",
     title: "Bronze Editorial",
   },
