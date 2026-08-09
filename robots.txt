@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aivideomotionru-cloud.github.io/alla-orishko-portfolio/sitemap.xml
