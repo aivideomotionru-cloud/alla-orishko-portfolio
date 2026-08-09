@@ -765,12 +765,16 @@ img {
   bottom: 1.5rem;
 }
 
-.work-frame-tall {
-  width: 32rem;
+.work-frame-square {
+  width: calc(68vh - 4.25rem);
 }
 
-.work-frame-wide {
-  width: 43rem;
+.work-frame-portrait {
+  width: calc(51vh - 3.1875rem);
+}
+
+.work-frame-soft-portrait {
+  width: calc(54.675vh - 3.417rem);
 }
 
 .work-frame-tina {
@@ -1678,8 +1682,9 @@ img {
   }
 
   .work-frame,
-  .work-frame-tall,
-  .work-frame-wide {
+  .work-frame-square,
+  .work-frame-portrait,
+  .work-frame-soft-portrait {
     width: 78vw;
     height: 58svh;
     overflow: hidden;
