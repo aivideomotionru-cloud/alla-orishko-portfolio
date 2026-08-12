@@ -200,16 +200,8 @@ img {
   will-change: transform;
 }
 
-.hero-light-scene .hero-composite-art {
-  object-position: center;
-}
-
-@media (min-width: 769px) {
-  .hero-portrait-wrap,
-  .hero-light-haze,
-  .hero-cloud-veil {
-    display: none;
-  }
+.hero-light-scene .hero-background-art {
+  object-position: center bottom;
 }
 
 @keyframes beauty-light-drift {
@@ -226,6 +218,7 @@ img {
   position: absolute;
   top: 22%;
   left: var(--page-pad);
+  z-index: 5;
   width: min(52rem, 57vw);
 }
 
@@ -306,11 +299,11 @@ img {
 
 .hero-portrait-wrap {
   position: absolute;
-  right: 1rem;
-  bottom: -13%;
+  right: -1.5%;
+  bottom: -8%;
   z-index: 2;
-  width: min(53rem, 59vw);
-  height: 108%;
+  width: min(49rem, 51vw);
+  height: 94%;
   overflow: visible;
   clip-path: inset(100% 0 0 0);
 }
@@ -462,46 +455,23 @@ img {
   height: 100%;
   object-fit: contain;
   object-position: center bottom;
-  transform: translate3d(0, 1%, 0) scale(1.02);
-  transform-origin: center bottom;
-  transition: transform 320ms cubic-bezier(.22,.72,.18,1);
-  will-change: transform;
-  -webkit-mask-image: linear-gradient(
-      to bottom,
-      #000 0%,
-      #000 64%,
-      rgba(0, 0, 0, 0.88) 73%,
-      rgba(0, 0, 0, 0.42) 84%,
-      transparent 98%
-    ),
-    linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0, 0, 0, 0.3) 9%,
-      #000 20%,
-      #000 80%,
-      rgba(0, 0, 0, 0.3) 91%,
-      transparent 100%
-    );
-  -webkit-mask-composite: source-in;
+  transform: none;
   mask-image: linear-gradient(
-      to bottom,
-      #000 0%,
-      #000 64%,
-      rgba(0, 0, 0, 0.88) 73%,
-      rgba(0, 0, 0, 0.42) 84%,
-      transparent 98%
-    ),
-    linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0, 0, 0, 0.3) 9%,
-      #000 20%,
-      #000 80%,
-      rgba(0, 0, 0, 0.3) 91%,
-      transparent 100%
-    );
-  mask-composite: intersect;
+    to bottom,
+    #000 0%,
+    #000 82%,
+    rgba(0, 0, 0, 0.92) 87%,
+    rgba(0, 0, 0, 0.48) 93%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 82%,
+    rgba(0, 0, 0, 0.92) 87%,
+    rgba(0, 0, 0, 0.48) 93%,
+    transparent 100%
+  );
 }
 
 .hero-light-haze {
@@ -509,11 +479,11 @@ img {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 3;
-  height: 34%;
+  z-index: 1;
+  height: 20%;
   pointer-events: none;
   background: url("assets/hero-beauty-light-v1.webp") center bottom / 104% auto no-repeat;
-  opacity: 0.78;
+  opacity: 0.52;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.12) 18%, rgba(0, 0, 0, 0.7) 62%, #000 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.12) 18%, rgba(0, 0, 0, 0.7) 62%, #000 100%);
 }
@@ -521,14 +491,14 @@ img {
 .hero-cloud-veil {
   position: absolute;
   right: -3%;
-  bottom: -5%;
-  z-index: 4;
-  width: min(63rem, 69vw);
-  height: 46%;
+  bottom: -7%;
+  z-index: 3;
+  width: min(55rem, 59vw);
+  height: 20%;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.92;
-  filter: blur(10px);
+  opacity: 0.64;
+  filter: blur(8px);
   transform: scale(1.045);
 }
 
@@ -1481,10 +1451,10 @@ img {
   }
 
   .hero-portrait-wrap {
-    right: 0;
-    bottom: -12%;
-    width: min(49rem, 59vw);
-    height: 106%;
+    right: -3%;
+    bottom: -8%;
+    width: min(45rem, 55vw);
+    height: 92%;
   }
 
   .hero-architecture {
@@ -1578,17 +1548,18 @@ img {
   }
 
   .hero-light-haze {
-    height: 29%;
+    height: 16%;
     background-size: auto 220%;
     background-position: 64% bottom;
+    opacity: 0.58;
   }
 
   .hero-cloud-veil {
     right: -16%;
     bottom: -4%;
     width: 126%;
-    height: 34%;
-    opacity: 0.84;
+    height: 17%;
+    opacity: 0.58;
     filter: blur(8px);
   }
 
@@ -1895,6 +1866,29 @@ img {
     top: max(1rem, env(safe-area-inset-top));
     right: max(1rem, env(safe-area-inset-right));
     z-index: 3;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-header {
+    padding-top: calc(1rem + env(safe-area-inset-top));
+    padding-right: max(var(--page-pad), env(safe-area-inset-right));
+    padding-left: max(var(--page-pad), env(safe-area-inset-left));
+  }
+
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero-portrait-wrap {
+    right: -12%;
+    bottom: -10%;
+    width: 124%;
+    height: 84%;
+  }
+
+  .hero-portrait {
+    transform: none;
   }
 }
 
