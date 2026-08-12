@@ -1912,9 +1912,15 @@ img {
 
   .hero-portrait-wrap {
     right: -12%;
-    bottom: -10%;
+    bottom: -12%;
     width: 124%;
-    height: 84%;
+    height: 76%;
+  }
+
+  .hero-note {
+    max-width: calc(100vw - 4.5rem);
+    margin-top: 0.8rem;
+    line-height: 1.35;
   }
 
   .hero-portrait {
