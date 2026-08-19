@@ -1115,8 +1115,10 @@ img {
   object-position: center 54%;
 }
 
-.guest-slide-02 {
-  object-position: center 43%;
+.guest-image .guest-slide-02 {
+  object-fit: cover;
+  object-position: center top;
+  background: #120507;
 }
 
 .guest-slide-03 {
