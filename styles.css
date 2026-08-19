@@ -1111,17 +1111,20 @@ img {
   transform: scale(0.12) rotate(22deg);
 }
 
-.guest-slide-tina {
-  object-position: center center;
+.guest-slide-01 {
+  object-position: center 54%;
 }
 
-.guest-slide-liza,
-.guest-slide-bruletova {
-  object-position: center top;
+.guest-slide-02 {
+  object-position: center 43%;
 }
 
-.guest-slide-pinchuk {
-  object-position: center 38%;
+.guest-slide-03 {
+  object-position: center 48%;
+}
+
+.guest-slide-04 {
+  object-position: center 44%;
 }
 
 .guest-image figcaption {
