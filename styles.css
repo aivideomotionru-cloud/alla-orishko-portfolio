@@ -658,7 +658,8 @@ img {
 
 .editorial-work-stack-right {
   grid-column: 7 / span 6;
-  margin-top: clamp(1rem, 3vw, 3rem);
+  margin-top: 0;
+  padding-top: clamp(1rem, 3vw, 3rem);
 }
 
 .editorial-work-stack .editorial-work {
@@ -669,7 +670,7 @@ img {
 
 .editorial-work-stack .editorial-work-mini {
   position: relative;
-  top: -0.5rem;
+  top: 0.7rem;
   width: 60%;
   justify-self: end;
 }
