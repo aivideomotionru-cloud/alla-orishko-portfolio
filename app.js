@@ -61,12 +61,17 @@ function unlockDialogScroll() {
   document.body.classList.remove("dialog-open");
   document.body.style.top = "";
   dialogScrollLocked = false;
+  const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior = "auto";
   window.scrollTo(0, lockedScrollY);
+  requestAnimationFrame(() => {
+    document.documentElement.style.scrollBehavior = previousScrollBehavior;
+  });
 }
 
 function showStableDialog(dialogElement) {
-  dialogElement.showModal();
   lockDialogScroll();
+  dialogElement.showModal();
 }
 
 function updateMotionToggle(button, paused, galleryName) {
