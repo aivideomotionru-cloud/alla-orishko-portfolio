@@ -23,7 +23,7 @@
     <title>Alla Orishko | Makeup &amp; Brow Artist</title>
     <link rel="canonical" href="https://aivideomotionru-cloud.github.io/alla-orishko-portfolio/" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link rel="stylesheet" href="styles.css?v=85" />
+    <link rel="stylesheet" href="styles.css?v=94" />
     <link rel="stylesheet" href="hero-rebuild.css?v=1" />
   </head>
   <body>
@@ -91,44 +91,50 @@
           <span>Each image is an actual work from Alla's portfolio.</span>
         </div>
 
-        <div class="work-stage">
-          <div class="work-viewport">
-            <div class="work-track">
-              <button class="work-frame work-frame-four-five" type="button" data-work="0">
-                <img src="assets/work-bronze-original.webp" alt="Bronze editorial eye makeup by Alla Orishko" loading="lazy" decoding="async" />
-                <span><b>01</b> Bronze Editorial</span>
-              </button>
-              <button class="work-frame work-frame-portrait" type="button" data-work="1">
-                <img
-                  src="assets/work-replacement-11.webp"
-                  alt="Editorial green eye makeup and luminous skin by Alla Orishko"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span><b>02</b> Colour &amp; Light</span>
-              </button>
-              <button class="work-frame work-frame-soft-portrait" type="button" data-work="2">
-                <img
-                  src="assets/work-contemporary-nude.webp"
-                  alt="Contemporary nude makeup with a soft satin finish by Alla Orishko"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span><b>03</b> Contemporary Nude</span>
-              </button>
-              <button class="work-frame work-frame-portrait" type="button" data-work="3">
-                <img
-                  src="assets/work-precision-liner.webp"
-                  alt="Precision graphic liner and luminous complexion by Alla Orishko"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span><b>04</b> Precision Liner</span>
-              </button>
-            </div>
+        <div class="editorial-work-grid" aria-label="Selected makeup portfolio">
+          <button class="editorial-work editorial-work-lead reveal-on-scroll" type="button" data-work="0">
+            <img src="assets/selected-work-01.webp" alt="Luminous editorial makeup by Alla Orishko" loading="lazy" decoding="async" />
+            <span><b>01</b> Luminous Editorial</span>
+          </button>
+          <button class="editorial-work editorial-work-pair reveal-on-scroll" type="button" data-work="1">
+            <img src="assets/selected-work-02.webp" alt="Soft glamour makeup by Alla Orishko" loading="lazy" decoding="async" />
+            <span><b>02</b> Soft Glamour</span>
+          </button>
+          <button class="editorial-work editorial-work-pair reveal-on-scroll" type="button" data-work="2">
+            <img src="assets/selected-work-03.webp" alt="Polished evening makeup by Alla Orishko" loading="lazy" decoding="async" />
+            <span><b>03</b> Evening Polish</span>
+          </button>
+          <div class="editorial-work-stack">
+            <button class="editorial-work editorial-work-narrow reveal-on-scroll" type="button" data-work="3">
+              <img src="assets/selected-work-04.webp" alt="Refined beauty makeup by Alla Orishko" loading="lazy" decoding="async" />
+              <span><b>04</b> Refined Beauty</span>
+            </button>
+            <button class="editorial-work editorial-work-pair reveal-on-scroll" type="button" data-work="5">
+              <img src="assets/selected-work-06-close.webp" alt="Camera-ready complexion by Alla Orishko" loading="lazy" decoding="async" />
+              <span><b>06</b> Camera Ready</span>
+            </button>
+            <button class="editorial-work editorial-work-mini reveal-on-scroll" type="button" data-work="6">
+              <img src="assets/selected-work-10-close.webp" alt="Radiant glamour makeup by Alla Orishko" loading="lazy" decoding="async" />
+              <span><b>07</b> Radiant Glam</span>
+            </button>
           </div>
-          <button class="motion-toggle work-motion-toggle" type="button" aria-label="Pause work gallery" aria-pressed="false" title="Pause gallery">
-            <span aria-hidden="true"></span>
+          <div class="editorial-work-stack editorial-work-stack-right">
+            <button class="editorial-work editorial-work-wide reveal-on-scroll" type="button" data-work="4">
+              <img src="assets/selected-work-05.webp" alt="Modern nude makeup by Alla Orishko" loading="lazy" decoding="async" />
+              <span><b>05</b> Modern Nude</span>
+            </button>
+            <button class="editorial-work editorial-work-feature reveal-on-scroll" type="button" data-work="7">
+              <img src="assets/selected-work-08.webp" alt="Contemporary editorial portrait with makeup by Alla Orishko" loading="lazy" decoding="async" />
+              <span><b>08</b> Contemporary Portrait</span>
+            </button>
+          </div>
+          <button class="editorial-work editorial-work-pair reveal-on-scroll" type="button" data-work="8">
+            <img src="assets/selected-work-07.webp" alt="Sculpted glamour makeup by Alla Orishko" loading="lazy" decoding="async" />
+            <span><b>09</b> Sculpted Glamour</span>
+          </button>
+          <button class="editorial-work editorial-work-pair reveal-on-scroll" type="button" data-work="9">
+            <img src="assets/selected-work-09.webp" alt="Elegant beauty makeup by Alla Orishko" loading="lazy" decoding="async" />
+            <span><b>10</b> Elegant Beauty</span>
           </button>
         </div>
       </section>
@@ -312,8 +318,8 @@
       <button class="dialog-close" type="button" aria-label="Close viewer">Close</button>
       <button class="dialog-arrow dialog-prev" type="button" aria-label="Previous work">Previous</button>
       <figure>
-        <img src="assets/work-bronze-original.webp" alt="" />
-        <figcaption><span>01 / 04</span><strong>Bronze Editorial</strong></figcaption>
+        <img src="assets/selected-work-01.webp" alt="" />
+        <figcaption><span>01 / 10</span><strong>Luminous Editorial</strong></figcaption>
       </figure>
       <button class="dialog-arrow dialog-next" type="button" aria-label="Next work">Next</button>
     </dialog>
@@ -329,6 +335,6 @@
       </figure>
     </dialog>
 
-    <script src="app.js?v=32"></script>
+    <script src="app.js?v=34"></script>
   </body>
 </html>

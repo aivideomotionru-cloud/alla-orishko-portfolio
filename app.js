@@ -1,26 +1,16 @@
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const works = [
-  {
-    src: "assets/work-bronze-original.webp",
-    alt: "Bronze editorial eye makeup by Alla Orishko",
-    title: "Bronze Editorial",
-  },
-  {
-    src: "assets/work-replacement-11.webp",
-    alt: "Editorial green eye makeup and luminous skin by Alla Orishko",
-    title: "Colour & Light",
-  },
-  {
-    src: "assets/work-contemporary-nude.webp",
-    alt: "Contemporary nude makeup with a soft satin finish by Alla Orishko",
-    title: "Contemporary Nude",
-  },
-  {
-    src: "assets/work-precision-liner.webp",
-    alt: "Precision graphic liner and luminous complexion by Alla Orishko",
-    title: "Precision Liner",
-  },
+  { src: "assets/selected-work-01.webp", alt: "Luminous editorial makeup by Alla Orishko", title: "Luminous Editorial" },
+  { src: "assets/selected-work-02.webp", alt: "Soft glamour makeup by Alla Orishko", title: "Soft Glamour" },
+  { src: "assets/selected-work-03.webp", alt: "Polished evening makeup by Alla Orishko", title: "Evening Polish" },
+  { src: "assets/selected-work-04.webp", alt: "Refined beauty makeup by Alla Orishko", title: "Refined Beauty" },
+  { src: "assets/selected-work-05.webp", alt: "Modern nude makeup by Alla Orishko", title: "Modern Nude" },
+  { src: "assets/selected-work-06.webp", alt: "Camera-ready complexion by Alla Orishko", title: "Camera Ready" },
+  { src: "assets/selected-work-10.webp", alt: "Radiant glamour makeup by Alla Orishko", title: "Radiant Glam" },
+  { src: "assets/selected-work-08.webp", alt: "Contemporary editorial portrait with makeup by Alla Orishko", title: "Contemporary Portrait" },
+  { src: "assets/selected-work-07.webp", alt: "Sculpted glamour makeup by Alla Orishko", title: "Sculpted Glamour" },
+  { src: "assets/selected-work-09.webp", alt: "Elegant beauty makeup by Alla Orishko", title: "Elegant Beauty" },
 ];
 
 const menuToggle = document.querySelector(".menu-toggle");
@@ -33,18 +23,7 @@ const hero = document.querySelector(".hero");
 const titleLineBlocks = [...document.querySelectorAll(".title-line")];
 const heroThread = document.querySelector(".hero-thread");
 const progress = document.querySelector(".scroll-progress");
-const workViewport = document.querySelector(".work-viewport");
-const workTrack = document.querySelector(".work-track");
-const workFrames = [...document.querySelectorAll(".work-frame")];
-workFrames.forEach((frame) => {
-  const clone = document.createElement("div");
-  clone.className = `${frame.className} work-frame-clone`;
-  clone.innerHTML = frame.innerHTML;
-  clone.setAttribute("aria-hidden", "true");
-  workTrack.appendChild(clone);
-});
-const allWorkFrames = [...workTrack.querySelectorAll(".work-frame")];
-const workMotionToggle = document.querySelector(".work-motion-toggle");
+const workFrames = [...document.querySelectorAll(".editorial-work")];
 const guestSlides = [...document.querySelectorAll(".guest-slide")];
 const guestCarousel = document.querySelector(".guest-carousel");
 const guestImage = document.querySelector(".guest-image");
@@ -60,13 +39,9 @@ const guestDialogCount = guestDialog.querySelector(".guest-dialog-count");
 let activeWork = 0;
 let activeGuest = 0;
 let ticking = false;
-let galleryOffset = 0;
-let galleryLoopWidth = 0;
-let previousGalleryTime = 0;
 let portraitPointerX = 0;
 let portraitPointerY = 0;
 let heroScrollProgress = 0;
-let galleryPaused = false;
 let guestPaused = false;
 let stableViewportWidth = window.innerWidth;
 let stableViewportHeight = window.innerHeight;
@@ -101,7 +76,6 @@ function updateMotionToggle(button, paused, galleryName) {
   button.classList.toggle("is-paused", paused);
 }
 
-updateMotionToggle(workMotionToggle, galleryPaused, "work gallery");
 updateMotionToggle(guestMotionToggle, guestPaused, "client gallery");
 
 function showGuest(index) {
@@ -126,11 +100,6 @@ if (guestSlides.length > 1) {
     }, 1550);
   }, 5000);
 }
-
-workMotionToggle.addEventListener("click", () => {
-  galleryPaused = !galleryPaused;
-  updateMotionToggle(workMotionToggle, galleryPaused, "work gallery");
-});
 
 guestMotionToggle.addEventListener("click", () => {
   guestPaused = !guestPaused;
@@ -269,7 +238,7 @@ function stepWork(direction) {
   updateDialog();
 }
 
-allWorkFrames.forEach((frame) => frame.addEventListener("click", () => openWork(Number(frame.dataset.work))));
+workFrames.forEach((frame) => frame.addEventListener("click", () => openWork(Number(frame.dataset.work))));
 dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
 dialog.addEventListener("close", unlockDialogScroll);
 dialog.querySelector(".dialog-prev").addEventListener("click", () => stepWork(-1));
@@ -281,40 +250,6 @@ dialog.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") stepWork(-1);
   if (event.key === "ArrowRight") stepWork(1);
 });
-
-function measureGallery() {
-  const repeatedFirstFrame = allWorkFrames[works.length];
-  galleryLoopWidth = repeatedFirstFrame
-    ? repeatedFirstFrame.offsetLeft - allWorkFrames[0].offsetLeft
-    : 0;
-  if (galleryLoopWidth > 0) galleryOffset %= galleryLoopWidth;
-}
-
-function updateGalleryFocus() {
-  const center = window.innerWidth / 2;
-  allWorkFrames.forEach((frame) => {
-    const box = frame.getBoundingClientRect();
-    const frameCenter = box.left + box.width / 2;
-    const distance = Math.min(1, Math.abs(frameCenter - center) / center);
-    const blur = Math.max(0, distance - 0.34) * 3;
-    frame.querySelector("img").style.filter = `blur(${blur}px)`;
-  });
-}
-
-function animateGallery(timestamp) {
-  if (!previousGalleryTime) previousGalleryTime = timestamp;
-  const elapsed = Math.min(50, timestamp - previousGalleryTime);
-  previousGalleryTime = timestamp;
-
-  if (galleryLoopWidth > 0 && !dialog.open && !galleryPaused && !document.hidden) {
-    const speed = window.innerWidth <= 760 ? 20 : 32;
-    galleryOffset = (galleryOffset + (elapsed / 1000) * speed) % galleryLoopWidth;
-  }
-
-  workTrack.style.transform = `translate3d(${-galleryOffset}px, 0, 0)`;
-  updateGalleryFocus();
-  requestAnimationFrame(animateGallery);
-}
 
 function updateMotion() {
   ticking = false;
@@ -341,13 +276,10 @@ window.addEventListener("resize", () => {
   if (Math.abs(nextViewportWidth - stableViewportWidth) > 1) {
     stableViewportWidth = nextViewportWidth;
     stableViewportHeight = window.innerHeight;
-    measureGallery();
   }
   requestMotionUpdate();
 });
 window.addEventListener("load", () => {
   animateIntro();
-  measureGallery();
   updateMotion();
-  requestAnimationFrame(animateGallery);
 });
