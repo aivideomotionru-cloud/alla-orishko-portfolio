@@ -1,13 +1,13 @@
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const works = [
-  { src: "assets/selected-work-01.webp", alt: "Luminous editorial makeup by Alla Orishko", title: "Luminous Editorial" },
+  { src: "assets/selected-work-01-verified.webp", alt: "Luminous editorial makeup by Alla Orishko", title: "Luminous Editorial" },
   { src: "assets/selected-work-02.webp", alt: "Soft glamour makeup by Alla Orishko", title: "Soft Glamour" },
   { src: "assets/selected-work-03.webp", alt: "Polished evening makeup by Alla Orishko", title: "Evening Polish" },
   { src: "assets/selected-work-04.webp", alt: "Refined beauty makeup by Alla Orishko", title: "Refined Beauty" },
   { src: "assets/selected-work-05.webp", alt: "Modern nude makeup by Alla Orishko", title: "Modern Nude" },
-  { src: "assets/selected-work-06.webp", alt: "Camera-ready complexion by Alla Orishko", title: "Camera Ready" },
-  { src: "assets/selected-work-10.webp", alt: "Radiant glamour makeup by Alla Orishko", title: "Radiant Glam" },
+  { src: "assets/selected-work-06-waist-retouched.webp", alt: "Camera-ready complexion by Alla Orishko", title: "Camera Ready" },
+  { src: "assets/selected-work-10-close.webp", alt: "Radiant glamour makeup by Alla Orishko", title: "Radiant Glam" },
   { src: "assets/selected-work-08.webp", alt: "Contemporary editorial portrait with makeup by Alla Orishko", title: "Contemporary Portrait" },
   { src: "assets/selected-work-07.webp", alt: "Sculpted glamour makeup by Alla Orishko", title: "Sculpted Glamour" },
   { src: "assets/selected-work-09.webp", alt: "Elegant beauty makeup by Alla Orishko", title: "Elegant Beauty" },
