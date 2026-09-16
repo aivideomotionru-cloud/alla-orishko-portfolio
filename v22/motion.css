@@ -1,0 +1,13 @@
+.motion-interlude { background: #f3e9e8; }
+.motion-copy { padding: 56px 22px 34px; }
+.motion-copy h2 { margin: 0; color: #9d1230; font: 400 52px/.86 Cormorant, Georgia, serif; letter-spacing: -.04em; }
+.motion-copy > p:last-child { max-width: 28ch; margin: 26px 0 0; font-size: 16px; line-height: 1.6; }
+.motion-media { padding: 0 16px 24px; display: flex; justify-content: center; }
+.motion-media video { display: block; width: min(100%, 480px); height: auto; aspect-ratio: 9/16; object-fit: cover; background: #e8dedd; }
+@media (min-width: 700px) {
+  .motion-interlude { display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 56%); align-items: center; min-height: 760px; }
+  .motion-copy { padding: 70px 5vw 70px 7vw; }
+  .motion-copy h2 { font-size: 68px; }
+  .motion-media { padding: 42px 5vw 42px 0; justify-content: flex-end; }
+  .motion-media video { width: min(100%, 420px); max-height: 740px; }
+}

@@ -6,6 +6,7 @@
   <title>Alla Orishko — Makeup & Brow Artist</title>
   <meta name="description" content="Alla Orishko — makeup and brow artist. Editorial beauty, refined complexion and precise details.">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="motion.css">
 </head>
 <body>
   <header class="topbar">
@@ -31,7 +32,7 @@
         <p>Quiet preparation, precise tools and a finish that stays true to the person.</p>
       </div>
       <div class="studio-video-frame">
-        <video src="assets/alla-studio-7049-silent.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Alla preparing makeup at her studio table"></video>
+        <video src="assets/alla-studio-7049-silent.mp4" poster="assets/alla-studio-7049-poster.jpg" muted loop playsinline preload="none" data-viewport-video aria-label="Alla preparing makeup at her studio table"></video>
       </div>
     </section>
 
@@ -58,9 +59,20 @@
       </div>
     </section>
 
+    <section class="motion-interlude" id="motion-look" aria-labelledby="motion-title">
+      <div class="motion-copy">
+        <p class="eyebrow">The finished look</p>
+        <h2 id="motion-title">Beauty<br>in motion.</h2>
+        <p>Light, texture and detail from every angle.</p>
+      </div>
+      <div class="motion-media">
+        <video src="assets/alla-model-7436-cut-silent.mp4" poster="assets/alla-model-7436-poster.jpg" muted loop playsinline preload="none" data-viewport-video aria-label="A finished makeup look shown in motion" tabindex="0"></video>
+      </div>
+    </section>
+
     <section class="quote-band"><p>Skin first.<br>Detail always.</p></section>
 
-    <section class="product-split">
+    <section class="product-split" id="artist-eye">
       <div><p class="eyebrow">Artist's eye</p><h2>Texture, tone,<br>balance.</h2><p>Every detail is chosen to belong to the face, the light and the moment.</p></div>
       <img src="assets/cosmetics-artist-tools-alla-v3.png" alt="Professional brushes and cosmetic powders in Alla Orishko's light editorial palette" loading="lazy">
     </section>
